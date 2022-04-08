@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { DashboardRoutingModule } from './dashboard-routing.module';
+import { NasaRoutingModule } from './nasa-routing.module';
 import { GalleryComponent } from './pages/gallery/gallery.component';
 import { DetailComponent } from './pages/detail/detail.component';
 
@@ -13,7 +13,7 @@ import { DetailComponent } from './pages/detail/detail.component';
   ],
   imports: [
     CommonModule,
-    DashboardRoutingModule
+    NasaRoutingModule
   ]
 })
-export class DashboardModule { }
+export class NasaModule { }

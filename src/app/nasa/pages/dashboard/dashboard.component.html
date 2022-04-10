@@ -1,6 +1,6 @@
 <h1>APOD: Astronomy Picture oh the Day</h1>
 <hr>
 
-<div class="row row-cols-3" *ngFor="let apod of lastSixAPOD">
-  <app-picture-card [apod]="apod"></app-picture-card>
+<div class="row row-cols-3">
+  <app-picture-card *ngFor="let apod of lastSixAPOD" [apod]="apod"></app-picture-card>
 </div>

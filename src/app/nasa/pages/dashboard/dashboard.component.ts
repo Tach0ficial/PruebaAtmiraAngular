@@ -14,8 +14,7 @@ export class DashboardComponent implements OnInit {
   constructor(private nasaService: NasaService) { }
 
   ngOnInit(): void {
-    const startDate = new Date().toISOString().slice(0, 10)
-    this.nasaService.getLastSixAPOD(startDate)
+    this.nasaService.getLastSixAPOD()
       .subscribe(res => {this.lastSixAPOD = res});
   }
 

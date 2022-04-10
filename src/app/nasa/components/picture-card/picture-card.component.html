@@ -1,8 +1,9 @@
 <div class="card c-p m-4 border-0 shadow-lg animate__animated animate__fadeInUp">
-  <img class="card-img" src="https://apod.nasa.gov/apod/image/2204/CmbDipole_cobe_960.jpg"
-    alt="CMB Dipole: Speeding Through the Universe">
+  <img class="card-img" [src]="apod.url">
   <div class="card-img-overlay">
-    <h5 class="card-title text-primary fw-bold">{{apod.title}}</h5>
-    <p class="card-text fw-bold">{{apod.date}}</p>
+    <div class="card-title-text rounded p-2">
+      <h5 class="card-title text-light fw-bold">{{apod.title}}</h5>
+      <p class="card-text text-light fw-bold">{{apod.date}}</p>
+    </div>
   </div>
 </div>

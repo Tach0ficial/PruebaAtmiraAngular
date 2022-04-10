@@ -1,1 +1,8 @@
-<p>detail works!</p>
+<div class="m-0 row justify-content-center align-items-center">
+  <img class="w-50" [src]="apod.url" [alt]="apod.title">
+  <div class="col-auto p-5">
+    <h1 class="text-center">{{apod.title}}</h1>
+    <p class="text-center">{{apod.explanation}}</p>
+    <p class="text-center">{{apod.date}}</p>
+  </div>
+</div>

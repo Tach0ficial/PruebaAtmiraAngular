@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NasaApodResponse } from '../../interfaces/nasaApodResponse.interface';
+import { Router } from '@angular/router';
+import { NasaService } from '../../services/nasa.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  apod!: NasaApodResponse;
+
+  constructor(private router: Router,
+              private nasaService:NasaService) {}
 
   ngOnInit(): void {
+    this.nasaService.getAPODByDate(this.router.url.split('/')[2]).subscribe(
+      (apod: NasaApodResponse) => {
+        this.apod = apod;
+      }
+    )
+    
   }
 
 }

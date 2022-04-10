@@ -8,21 +8,25 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class NasaService {
+  private API_KEY = environment.API_KEY;
 
   constructor(private http: HttpClient) { }
 
   getLastSixAPOD():Observable<NasaApodResponse[]> {
-    const API_KEY = environment.API_KEY;
-    const startDate = this.getDateStartDate();
-    return this.http.get<NasaApodResponse[]>(`https://api.nasa.gov/planetary/apod?api_key=${API_KEY}&start_date=${startDate}`);
+    
+    const startDate = this.getDateOfFiveDaysBefore();
+    return this.http.get<NasaApodResponse[]>(`https://api.nasa.gov/planetary/apod?api_key=${this.API_KEY}&start_date=${startDate}`);
   }
 
-  // get the date of the 5 dyas before today
-  getDateStartDate():string{
+  getDateOfFiveDaysBefore():string{
     const today = new Date();
     const startDate = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 4);
     console.log(startDate.toISOString());
     return startDate.toISOString().split('T')[0];
+  }
+
+  getAPODByDate(date:string):Observable<NasaApodResponse> {
+    return this.http.get<NasaApodResponse>(`https://api.nasa.gov/planetary/apod?api_key=${this.API_KEY}&date=${date}`);
   }
 
 }

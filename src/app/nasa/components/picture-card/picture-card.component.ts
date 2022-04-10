@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { NasaApodResponse } from '../../interfaces/nasaApodResponse.interface';
 
 @Component({
@@ -11,9 +12,13 @@ export class PictureCardComponent implements OnInit {
   @Input()
   apod!: NasaApodResponse;
 
-  constructor() { }
+  constructor(private router:Router) { }
 
   ngOnInit(): void {
+  }
+
+  viewInDetail() {
+    this.router.navigate(['/detail', this.apod.date]);
   }
 
 }

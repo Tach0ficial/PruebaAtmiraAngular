@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NasaRoutingModule } from './nasa-routing.module';
@@ -19,7 +19,7 @@ import { LoadingLogoComponent } from './components/loading-logo/loading-logo.com
   imports: [
     CommonModule,
     NasaRoutingModule,
-    HttpClientModule
+    HttpClientModule 
   ]
 })
 export class NasaModule { }

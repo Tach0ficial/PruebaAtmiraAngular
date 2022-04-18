@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PictureCardComponent } from './picture-card.component';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('PictureCardComponent', () => {
   let component: PictureCardComponent;
@@ -8,7 +9,8 @@ describe('PictureCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PictureCardComponent ]
+      declarations: [PictureCardComponent ],
+      imports: [RouterTestingModule],
     })
     .compileComponents();
   });

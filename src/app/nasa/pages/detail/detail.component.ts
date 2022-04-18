@@ -12,28 +12,29 @@ import { delay } from 'rxjs';
 export class DetailComponent implements OnInit {
 
   apod: NasaApodResponse = {
-    date: new Date(),          
+    date: new Date(),
     explanation: '',
-    title: '',           
+    title: '',
     url: ''
   };
-  isLoading = true;
+
+  isLoading: boolean = true;
 
   constructor(private router: Router,
     private nasaService: NasaService) { }
 
   ngOnInit(): void {
     this.nasaService.getAPODByDate(this.router.url.split('/')[2])
-    .pipe(
-      delay(2000)
-    ).subscribe({
-      next:(apod: NasaApodResponse) => {
-        this.apod = apod;
-        this.isLoading = false;
-      },
-      error:() => {
-        this.router.navigate(['/']);
-      }
-    });
+      .pipe(
+        delay(2000)
+      ).subscribe({
+        next: (apod: NasaApodResponse) => {
+          this.apod = apod;
+          this.isLoading = false;
+        },
+        error: (err) => {
+          this.router.navigate(['/']);
+        }
+      });
   }
 }

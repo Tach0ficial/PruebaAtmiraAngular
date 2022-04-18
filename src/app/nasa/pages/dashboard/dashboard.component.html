@@ -1,14 +1,15 @@
-<h1>APOD: Astronomy Picture of the Day</h1>
+<h1 class="mt-4 text-center">🪐☄APOD: Astronomy Picture of the Day🌠🌌🚀</h1>
 <hr>
-
-<div class="row" *ngIf="!isLoading else divLoading">
-  <app-picture-card 
-        class="col-lg-4 col-md-6 col-sm-12" 
-        *ngFor="let apod of lastSixAPOD" 
-        [apod]="apod">
-  </app-picture-card>
+<div class="d-flex flex-column align-items-center">
+  <div class="row" *ngIf="!isLoading else divLoading">
+    <app-picture-card 
+          class="col-lg-4 col-md-6 col-sm-12" 
+          *ngFor="let apod of lastSixAPOD" 
+          [apod]="apod">
+    </app-picture-card>
+  </div>
 </div>
 
 <ng-template #divLoading>
-  <app-loading-logo></app-loading-logo>
+  <app-loading-logo class="w-75"></app-loading-logo>
 </ng-template>

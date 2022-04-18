@@ -11,7 +11,7 @@ import { NasaService } from '../../services/nasa.service';
 export class DashboardComponent implements OnInit {
 
   lastSixAPOD: NasaApodResponse[] = []
-  isLoading = true;
+  isLoading: boolean = true;
 
   constructor(private nasaService: NasaService) { }
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NasaApodResponse } from '../../interfaces/nasaApodResponse.interface';
 import { Router } from '@angular/router';
 import { NasaService } from '../../services/nasa.service';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -10,18 +11,29 @@ import { NasaService } from '../../services/nasa.service';
 })
 export class DetailComponent implements OnInit {
 
-  apod!: NasaApodResponse;
+  apod: NasaApodResponse = {
+    date: new Date(),          
+    explanation: '',
+    title: '',           
+    url: ''
+  };
+  isLoading = true;
 
   constructor(private router: Router,
-              private nasaService:NasaService) {}
+    private nasaService: NasaService) { }
 
   ngOnInit(): void {
-    this.nasaService.getAPODByDate(this.router.url.split('/')[2]).subscribe(
-      (apod: NasaApodResponse) => {
+    this.nasaService.getAPODByDate(this.router.url.split('/')[2])
+    .pipe(
+      delay(2000)
+    ).subscribe({
+      next:(apod: NasaApodResponse) => {
         this.apod = apod;
+        this.isLoading = false;
+      },
+      error:() => {
+        this.router.navigate(['/']);
       }
-    )
-    
+    });
   }
-
 }

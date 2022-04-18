@@ -6,13 +6,15 @@ import { DetailComponent } from './pages/detail/detail.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { PictureCardComponent } from './components/picture-card/picture-card.component';
+import { LoadingLogoComponent } from './components/loading-logo/loading-logo.component';
 
 
 @NgModule({
   declarations: [
     DetailComponent,
     DashboardComponent,
-    PictureCardComponent
+    PictureCardComponent,
+    LoadingLogoComponent
   ],
   imports: [
     CommonModule,

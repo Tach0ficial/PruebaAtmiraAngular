@@ -1,13 +1,17 @@
-<div class="d-flex flex-column align-items-center m-4">
-  <div class="d-flex flex-column flex-lg-row justify-content-evenly align-items-center" *ngIf="!isLoading else divLoading">
-    <img class="w-50" [src]="apod.url" [alt]="apod.title">
-    <div class="p-5">
-      <h1 class="text-center">{{apod.title}}</h1>
-      <p class="text-justify">{{apod.explanation}}</p>
-      <p class="text-center h1">{{apod.date}}</p>
+<div class="m-0 vh-100 row justify-content-center align-items-center">
+  <div class="col-auto">
+    <div *ngIf="!isLoading else divLoading">
+      <div class="d-flex flex-column flex-lg-row justify-content-evenly align-items-center">
+        <img [src]="apod.url" [alt]="apod.title">
+        <div class="content">
+          <h1 class="text-start text-primary">{{apod.title}}</h1>
+          <p class=" justify fs-6">{{apod.explanation}}</p>
+          <p class="text-end h3 text-primary">{{apod.date}}</p>
+        </div>
+      </div>
+      <button routerLink="/" class="btn btn-primary mb-4 mt-4">Back to dashboard</button>
     </div>
   </div>
-  <button routerLink="/" class="btn btn-primary mb-4 mt-4">Back to dashboard</button>
 </div>
 
 <ng-template #divLoading>

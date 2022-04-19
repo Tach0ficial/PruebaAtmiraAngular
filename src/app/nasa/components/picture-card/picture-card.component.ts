@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
 import { NasaApodResponse } from '../../interfaces/nasaApodResponse.interface';
 
 @Component({
@@ -17,6 +16,6 @@ export class PictureCardComponent {
     url: ''
   };
 
-  constructor(private router:Router) { }
+  constructor() { }
 
 }

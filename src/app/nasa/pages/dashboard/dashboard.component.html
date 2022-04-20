@@ -2,10 +2,12 @@
 <hr>
 <div class="d-flex flex-column align-items-center">
   <div class="row" *ngIf="!isLoading else divLoading">
+    <h1 *ngIf="requestErr">{{errMsg}}</h1>
     <app-picture-card 
           class="col-lg-4 col-md-6 col-sm-12" 
           *ngFor="let apod of lastSixAPOD" 
-          [apod]="apod">
+          [apod]="apod"
+          (click)="navigateToDetail(apod)">
     </app-picture-card>
   </div>
 </div>

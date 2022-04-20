@@ -1,6 +1,6 @@
 <div class="m-0 vh-100 row justify-content-center align-items-center">
   <div class="col-auto">
-    <div *ngIf="!isLoading else divLoading">
+    <div>
       <div class="d-flex flex-column flex-lg-row justify-content-evenly align-items-center">
         <img [src]="apod.url" [alt]="apod.title">
         <div class="content">
@@ -9,11 +9,7 @@
           <p class="text-end h3 text-primary">{{apod.date}}</p>
         </div>
       </div>
-      <button routerLink="/" class="btn btn-primary mb-4 mt-4">Back to dashboard</button>
+      <button (click)="backToDashboard()" class="btn btn-primary mb-4 mt-4">Back to dashboard</button>
     </div>
   </div>
 </div>
-
-<ng-template #divLoading>
-  <app-loading-logo></app-loading-logo>
-</ng-template>

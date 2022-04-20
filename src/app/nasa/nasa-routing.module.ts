@@ -5,7 +5,7 @@ import { DetailComponent } from './pages/detail/detail.component';
 
 const routes: Routes = [
   {path:'',component:DashboardComponent},
-  {path:'detail/:date',component:DetailComponent},
+  {path:'detail',component:DetailComponent},
   {path:'**',redirectTo:''}
 ];
 

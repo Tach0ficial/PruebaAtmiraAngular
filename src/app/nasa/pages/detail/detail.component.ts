@@ -3,6 +3,7 @@ import { NasaApodResponse } from '../../interfaces/nasaApodResponse.interface';
 import { Router } from '@angular/router';
 import { NasaService } from '../../services/nasa.service';
 import { delay } from 'rxjs';
+import { DetailService } from '../../services/detail.service';
 
 @Component({
   selector: 'app-detail',
@@ -11,30 +12,32 @@ import { delay } from 'rxjs';
 })
 export class DetailComponent implements OnInit {
 
-  apod: NasaApodResponse = {
-    date: new Date(),
-    explanation: '',
-    title: '',
-    url: ''
-  };
-
-  isLoading: boolean = true;
+  apod!: NasaApodResponse;
 
   constructor(private router: Router,
-    private nasaService: NasaService) { }
+    private detailService: DetailService) {
+    if (!this.detailService.getLastApod()) this.router.navigate(['/']);
+    this.apod = this.detailService.getLastApod();
+  }
 
   ngOnInit(): void {
-    this.nasaService.getAPODByDate(this.router.url.split('/')[2])
-      .pipe(
-        delay(2000)
-      ).subscribe({
-        next: (apod: NasaApodResponse) => {
-          this.apod = apod;
-          this.isLoading = false;
-        },
-        error: (err) => {
-          this.router.navigate(['/']);
-        }
-      });
+    // this.nasaService.getAPODByDate(this.router.url.split('/')[2])
+    //   .pipe(
+    //     delay(1000)
+    //   ).subscribe({
+    //     next: (apod: NasaApodResponse) => {
+    //       this.apod = apod;
+    //       this.isLoading = false;
+    //     },
+    //     error: (err) => {
+    //       this.router.navigate(['/']);
+    //     }
+    //   });
   }
+
+  backToDashboard(): void {
+    this.detailService.removeLastApod();
+    this.router.navigate(['/']);
+  }
+
 }

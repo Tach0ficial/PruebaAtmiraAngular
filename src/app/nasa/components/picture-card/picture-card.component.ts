@@ -10,7 +10,7 @@ export class PictureCardComponent {
 
   @Input()
   apod: NasaApodResponse = {
-    date: new Date(),          
+    date: '',          
     explanation: '',
     title: '',           
     url: ''

@@ -9,13 +9,11 @@ import { Observable } from 'rxjs';
 })
 export class NasaService {
 
-  private API_URL = `https://api.nasa.gov/planetary/apod?api_key=${environment.API_KEY}`;
-
   constructor(private http: HttpClient) { }
 
   getLastSixAPOD():Observable<NasaApodResponse[]> {
     const startDate = this.getDateOfFiveDaysBefore();
-    return this.http.get<NasaApodResponse[]>(`${this.API_URL}&start_date=${startDate}`);
+    return this.http.get<NasaApodResponse[]>(`${environment.API_URL}${environment.API_KEY}&start_date=${startDate}`);
   }
 
   getDateOfFiveDaysBefore():string{
@@ -25,8 +23,6 @@ export class NasaService {
   }
 
   getAPODByDate(date:string):Observable<NasaApodResponse> {
-    return this.http.get<NasaApodResponse>(`${this.API_URL}&date=${date}`);
+    return this.http.get<NasaApodResponse>(`${environment.API_URL}${environment.API_KEY}&date=${date}`);
   }
-  
-
 }
